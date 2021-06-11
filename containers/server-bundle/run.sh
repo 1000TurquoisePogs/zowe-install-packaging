@@ -46,7 +46,8 @@ do
     # echo "Acting on $D if exists"
     if [ -d "$D" ]; then
         ls -ltr $D
-        group=$(stat -c %D)
+        stat -c %g $D
+        group=$(stat -c %g $D)
         # echo "Group in $D is $group"
         if [ "$group" != "root" ]; then
             exists=$(grep $group /etc/group | cut -f 1 -d ':')
